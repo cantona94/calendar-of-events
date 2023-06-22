@@ -1,14 +1,21 @@
+import { IUser } from "../../../models/IUser";
+
 export interface AuthState {
   isAuth: boolean;
-}
-
-export enum AuthActionEnum {
-  SET_AUTH = "SET_AUTH"
+  user: IUser;
+  isLoading: boolean;
+  error: string;
 }
 
 export interface SetAuthAction {
   payload: boolean;
 }
-
-export type AuthAction =
-  SetAuthAction
+export interface SetUserAction {
+  payload: IUser;
+}
+export interface SetErrorAction {
+  payload: string;
+}
+export interface SetIsLoadingAction {
+  payload: boolean;
+}
