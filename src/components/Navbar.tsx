@@ -3,13 +3,11 @@ import { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { RouteNames } from '../router';
 import { useTypedSelector } from '../hooks/useTypedSelector';
-import { logout } from '../store/reducers/auth/action-creators';
-import { useDispatch } from 'react-redux';
-import { AppDispatch } from '../store';
+import { useActions } from '../hooks/useActions';
 
 export const Navbar: FC = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch<AppDispatch>();
+  const { logout } = useActions();
   const { isAuth, user } = useTypedSelector(state => state.auth);
 
   const menuLoginItems = [
@@ -27,7 +25,7 @@ export const Navbar: FC = () => {
     },
     {
       key: '2',
-      onClick: () => dispatch(logout()),
+      onClick: () => logout(),
       label: 'Выход',
     }
   ]
