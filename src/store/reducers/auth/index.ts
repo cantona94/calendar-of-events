@@ -1,14 +1,20 @@
-import { AuthAction, AuthActionEnum, AuthState } from "./types"
+import { createSlice } from '@reduxjs/toolkit';
+import { AuthAction, AuthState } from "./types"
 
 const initialState: AuthState = {
   isAuth: false,
 }
 
-export default function authReducer(state = initialState, action: AuthAction): AuthState {
-  switch (action.type) {
-    case AuthActionEnum.SET_AUTH:
-      return { ...state, isAuth: action.payload }
-    default:
-      return state
+const authSlice = createSlice({
+  name: 'auth',
+  initialState,
+  reducers: {
+    setAuth(state, action: AuthAction) {
+      state.isAuth = !action.payload
+    }
   }
-};
+})
+
+export const { setAuth } = authSlice.actions;
+
+export default authSlice.reducer;

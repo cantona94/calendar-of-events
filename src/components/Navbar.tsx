@@ -8,20 +8,34 @@ export const Navbar: FC = () => {
   const navigate = useNavigate();
   const { isAuth } = useTypedSelector(state => state.auth);
 
+  const menuLoginItems = [
+    {
+      key: '1',
+      onClick: () => navigate(RouteNames.LOGIN),
+      label: 'Регистрация',
+    }
+  ]
+
+  const menuEventItems = [
+    {
+      key: '1',
+      label: 'User',
+    },
+    {
+      key: '2',
+      onClick: () => console.log('выход'),
+      label: 'Выход',
+    }
+  ]
+
   return (
     <Layout.Header>
       <Row justify='end'>
         {isAuth
-          ? <>
-            <div style={{ color: 'white' }}>Vova</div>
-            <Menu theme='dark' mode="horizontal" selectable={false}>
-              <Menu.Item onClick={() => console.log('выход')} key={1} >Выйти</Menu.Item>
-            </Menu>
-          </>
+          ?
+          <Menu theme='dark' mode="horizontal" selectable={false} items={menuEventItems} />
           :
-          <Menu theme='dark' mode="vertical" selectable={false}>
-            <Menu.Item onClick={() => navigate(RouteNames.LOGIN)} key={1}>Регистрация</Menu.Item>
-          </Menu>
+          <Menu theme='dark' mode="horizontal" selectable={false} items={menuLoginItems} />
         }
       </Row>
     </Layout.Header>
