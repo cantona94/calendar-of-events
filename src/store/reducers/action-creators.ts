@@ -1,6 +1,5 @@
-import { getUser, logout } from "./auth/action-creators";
+import { AuthActionCreators } from "./auth/action-creators";
 
 export const allActionCreators = {
-  getUser,
-  logout,
+  ...AuthActionCreators
 }
