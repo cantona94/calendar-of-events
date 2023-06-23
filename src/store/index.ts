@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
-import reducers from './reducers/auth';
+import authReducers from './reducers/auth';
+import eventReducers from './reducers/event';
 
 export const store = configureStore({
   reducer: {
-    auth: reducers,
+    auth: authReducers,
+    event: eventReducers,
   },
 });
 
